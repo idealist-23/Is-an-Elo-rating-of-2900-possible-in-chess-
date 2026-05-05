@@ -1,5 +1,4 @@
 # simulator.py
-import time
 import itertools
 import data_config as data
 import elo_engine as calc
@@ -14,7 +13,6 @@ pool_d = list(itertools.combinations(data.POOLS["Pool_D"], data.TOURNAMENT_QUOTA
 # Warning: This generates millions of combinations, takes a few seconds to run
 all_tournaments = list(itertools.product(pool_a, pool_b, pool_c, pool_d))
 
-start_time = time.time()
 
 all_calculations = []
 TARGET_ELO_GAIN = 4.0 
@@ -29,10 +27,5 @@ for tournament in all_tournaments:
     
     all_calculations.append(required_score)
 
-end_time = time.time()
-
-execution_time = end_time - start_time
-
-print(f"Execution Time: {execution_time:.2f} seconds.")
 
 print(f"Done! Simulated {len(all_calculations)} tournaments.")
